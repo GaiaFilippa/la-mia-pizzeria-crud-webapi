@@ -178,7 +178,19 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        public IActionResult FindArticles(string name)
+        {
 
+            using (PizzaContext db = new PizzaContext())
+            {
+                List<Pizza> matchNamePizza = db.Pizze.Where(pizza => pizza.Name.Contains(name)).ToList();
+
+                ListPizzas resultModel = new ListPizzas(name, matchNamePizza);
+
+
+                return View("SearchArticles", resultModel);
+            }
+        }
 
     }
 }
