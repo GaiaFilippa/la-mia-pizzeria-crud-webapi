@@ -178,7 +178,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        public IActionResult FindArticles(string name)
+        public IActionResult FindPizza(string name)
         {
 
             using (PizzaContext db = new PizzaContext())
@@ -188,7 +188,7 @@ namespace LaMiaPizzeria.Controllers
                 ListPizzas resultModel = new ListPizzas(name, matchNamePizza);
 
 
-                return View("SearchArticles", resultModel);
+                return View("SearchPizza", resultModel);
             }
         }
 
