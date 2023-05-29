@@ -1,7 +1,10 @@
 ﻿using LaMiaPizzeria.Database;
 using LaMiaPizzeria.Models;
+using LaMiaPizzeria.Models.ModelForViews;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace LaMiaPizzeria.Controllers.API
 {
@@ -92,6 +95,41 @@ namespace LaMiaPizzeria.Controllers.API
                 {
                     return NotFound("Non ho trovato l'articolo da eliminare!");
 
+                }
+            }
+        }
+
+
+
+
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] Pizza data)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Ok();
+            }
+
+            using (PizzaContext db = new PizzaContext())
+            {
+                Pizza? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                if (pizzaToModify != null)
+                {
+
+                    pizzaToModify.Name = data.Name;
+                    pizzaToModify.Description = data.Description;
+                    pizzaToModify.Image = data.Image;
+                    pizzaToModify.Price = data.Price;
+
+                    db.SaveChanges();
+                    return Ok();
+
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
         }
