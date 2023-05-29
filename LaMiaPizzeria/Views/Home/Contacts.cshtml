@@ -1,0 +1,24 @@
+﻿@using LaMiaPizzeria.Models.ModelForViews
+@model Contacts;
+
+<div class="container text-bg-light mt-5">
+
+    <h3 class="p-5">Contact us</h3>
+
+    <form class="text-center p-5" asp-controller="Contacts" asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+
+        <input asp-for="Name" type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+
+        <input asp-for="Surname" type="text" id="defaultContactFormSurname" class="form-control mb-4" placeholder="Surname">
+
+        <input asp-for="Email" type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+        <div class="form-group mb-4">
+            <textarea asp-for="Feedback" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Feedback"></textarea>
+        </div>
+
+        <button class="btn btn-success btn-block" type="submit">Send</button>
+
+    </form>
+</div>

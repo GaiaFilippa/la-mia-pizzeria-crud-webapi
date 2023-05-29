@@ -1,0 +1,40 @@
+﻿@using LaMiaPizzeria.Models.ModelForViews;
+@model PizzaListCategory;
+
+<div class="container text-bg-light mt-5">
+    <h2 class="mb-3 p-5">Aggiungi una pizza!</h2>
+    <form asp-controller="Pizza" asp-action="Create" method="post" class="p-5">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label asp-for="Pizza.Name" class="form-label">Titolo</label>
+            <input asp-for="Pizza.Name" type="text" class="form-control" required>
+            <span asp-validation-for="Pizza.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Pizza.Description" class="form-label">Descrizione</label>
+            <textarea asp-for="Pizza.Description" rows="10" class="form-control" required></textarea>
+            <span asp-validation-for="Pizza.Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Pizza.Image" class="form-label">URL Immagine</label>
+            <input asp-for="Pizza.Image" type="text" class="form-control" required>
+            <span asp-validation-for="Pizza.Image" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Pizza.Price" class="form-label">Prezzo</label>
+            <input asp-for="Pizza.Price" type="text" class="form-control" required>
+            <span asp-validation-for="Pizza.Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <strong>Categoria:</strong>
+            <select asp-for="Pizza.PizzaCategoryId" title="PizzaCategory" rows="10" class="d-block w-100">
+                <option value=""></option>
+                @foreach (PizzaCategory category in Model.PizzaCategories ?? new List<PizzaCategory>())
+                {
+                    <option value="@category.Id" selected="@(Model.Pizza.PizzaCategoryId == category.Id ? "selected" : null)">@category.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Invia</button>
+    </form>
+</div>

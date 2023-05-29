@@ -1,0 +1,22 @@
+﻿@model List<Contacts>
+
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h3>I vostri Feedbacks!</h3>
+            </div>
+        </div>
+        @foreach (Contacts contacts in Model) {
+            <div class="card">
+                <div class="card-header">
+                <p>@contacts.Email</p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@contacts.Name @contacts.Surname</h5>
+                    <p class="card-text">@contacts.Feedback</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                
+            </div>
+        }
+</div>

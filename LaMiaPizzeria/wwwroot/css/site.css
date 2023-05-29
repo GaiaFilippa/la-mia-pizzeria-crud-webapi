@@ -1,0 +1,25 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
+.img_square {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.bg_color {
+    background-color: saddlebrown;
+}

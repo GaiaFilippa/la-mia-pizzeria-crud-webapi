@@ -1,0 +1,32 @@
+﻿@model Pizza
+
+<div class="container text-bg-light mt-5">
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-4 p-5"><img src="@Model.Image" alt="Immagine @Model.Name" style="width:300px;height:300px;" /></div>
+        <div class="col-lg-8 px-5 mt-3">
+            <p>
+                <strong>Nome:</strong>
+                @Model.Name
+            </p>
+            <p>
+                <strong>Descrizione:</strong>
+                @Model.Description
+            </p>
+            <p>
+                <strong>Prezzo:</strong>
+                @Model.Price €
+            </p>
+            <p>
+                <strong>Categoria:</strong>
+                @if (Model.Category != null)
+                {
+                    @Model.Category.Name
+                }
+                else
+                {
+                    <span>Nessuna categoria è stata ancora associata.</span>
+                }
+            </p>
+        </div>
+    </div>
+</div>

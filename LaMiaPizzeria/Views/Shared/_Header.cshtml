@@ -1,0 +1,39 @@
+﻿<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center text-white" href="@Url.Action("Index", "Home")">
+            <img src="https://cdn-icons-png.flaticon.com/512/10733/10733260.png"
+                 alt="Logo"
+                 height="40"
+                 class="d-inline-block align-text-top me-3 text-white" />
+            La Mia Pizzeria
+        </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="@Url.Action("Index", "Pizza")">Menù</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="@Url.Action("Contacts", "Home")">Contatti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="@Url.Action("Privacy", "Home")">Privacy</a>
+                </li>
+                <li>
+                <partial name="_LoginPartial" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
