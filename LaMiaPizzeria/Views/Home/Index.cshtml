@@ -45,7 +45,7 @@
 </div>
 
 
-<div>
+<div class="container">
     <div class="d-flex my-4">
         <div class="animation">
             <p class="h1 text">Pizze in evidenza</p>
@@ -66,7 +66,7 @@
 
     @section Scripts {
     axios.get("https://localhost:7159/api/PizzaAPI/GetPizze").then((result) => {
-        console.log("ciao");
+        console.log(result);
         const listPizzas = result.data;
 
         if(listPizzas.length == 0){
@@ -75,14 +75,16 @@
         document.getElementById("container_cards").classList.remove("d-none");
         document.getElementById("spinner").classList.add("d-none");
 
-        listPizza.forEach(pizza => {
+        listPizzas.forEach(pizza => {
         document.getElementById("container_cards").innerHTML += `
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="${pizza.image}" alt="${pizza.name}">
             <div class="card-body">
                 <h5 class="card-title">${pizza.name}</h5>
-                <p class="card-text">${pizza.description}</p>
-                <p class="card-text">${pizza.price}</p>
+                <p class="card-text">${pizza.price} €</p>
+                <a class="btn btn-info btn-sm" href="/Home/Detail/${article.id}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </a>
             </div>
         </div>
                     `

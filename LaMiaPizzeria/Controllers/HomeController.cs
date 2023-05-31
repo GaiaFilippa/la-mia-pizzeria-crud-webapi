@@ -18,6 +18,12 @@ namespace LaMiaPizzeria.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Detail(int id)
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

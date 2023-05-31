@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "_MioLayout";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="pizza_container">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+            const url = window.location.href;
+            const indexOfLastSlash = url.lastIndexOf('/');
+            const id = url.substring(indexOfLastSlash + 1);
+
+            axios.get('/api/PizzaAPI/SearchById/' + id).then((result) => {
+                const pizza = result.data;
+
+                document.getElementById("pizza_container").innerHTML =  `
+                    <div class="col-12 col-md-4 p-2">
+                        <div class="card post h-100">
+                            <img src="${pizza.image}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${pizza.name}</h5>
+                                <p class="card-text">${pizza.description}</p>
+                                <p class="card-text">${pizza.price} €</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+        }).catch((error) => {
+            console.log(error);
+        });
+
+}
