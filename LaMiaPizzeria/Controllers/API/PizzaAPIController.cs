@@ -106,11 +106,6 @@ namespace LaMiaPizzeria.Controllers.API
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Pizza data)
         {
-            if (!ModelState.IsValid)
-            {
-                return Ok();
-            }
-
             using (PizzaContext db = new PizzaContext())
             {
                 Pizza? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
