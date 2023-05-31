@@ -54,7 +54,7 @@
 
     <div class="w-50 m-auto">
         <div id="spinner" class="spinner-border text-primary" role="status">
-            <span>Loading...</span>
+            <span class="visually-hidden">Loading...</span>
         </div>
     </div>
 
@@ -66,6 +66,7 @@
 
     @section Scripts {
     axios.get("https://localhost:7159/api/PizzaAPI/GetPizze").then((result) => {
+        console.log("ciao");
         const listPizzas = result.data;
 
         if(listPizzas.length == 0){
