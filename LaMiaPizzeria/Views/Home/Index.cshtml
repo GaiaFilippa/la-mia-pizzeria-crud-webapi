@@ -74,10 +74,10 @@
         document.getElementById("container_cards").classList.remove("d-none");
         document.getElementById("spinner").classList.add("d-none");
 
-        listArticles.forEach(pizza => {
+        listPizza.forEach(pizza => {
         document.getElementById("container_cards").innerHTML += `
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="${pizza.image}" alt="${pizza.title}">
+            <img class="card-img-top" src="${pizza.image}" alt="${pizza.name}">
             <div class="card-body">
                 <h5 class="card-title">${pizza.name}</h5>
                 <p class="card-text">${pizza.description}</p>
@@ -88,7 +88,6 @@
                 });
             }
     }).catch( (error) => {
-        console.error("Errore!");
         console.log(error);
     });
     }
